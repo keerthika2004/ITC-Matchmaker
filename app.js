@@ -419,11 +419,11 @@ function loginView() {
          <p class="muted">Check whether your Input Tax Credit is safe before filing this month.</p>
          <div class="form-field">
            <label for="email">Email</label>
-           <input class="input" id="email" name="email" placeholder="owner@business.in" autocomplete="username" />
+           <input class="input" id="email" name="email" placeholder="owner@business.in" autocomplete="username" value="${DEMO_EMAIL}" />
          </div>
          <div class="form-field">
            <label for="password">Password</label>
-           <input class="input" id="password" name="password" placeholder="Enter password" type="password" autocomplete="current-password" />
+           <input class="input" id="password" name="password" placeholder="Enter password" type="password" autocomplete="current-password" value="${DEMO_PASSWORD}" />
          </div>
          <button class="btn btn-primary btn-block" style="margin-top: 20px;">Continue</button>
          <div id="login-error"></div>
