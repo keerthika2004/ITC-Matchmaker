@@ -885,11 +885,11 @@ function loginView() {
          <p class="muted">${t("login_sub")}</p>
          <div class="form-field">
            <label for="email">${t("email")}</label>
-           <input class="input" id="email" name="email" placeholder="owner@business.in" autocomplete="username" />
+           <input class="input" id="email" name="email" placeholder="owner@business.in" autocomplete="username" value="${DEMO_EMAIL}" />
          </div>
          <div class="form-field">
            <label for="password">${t("password")}</label>
-           <input class="input" id="password" name="password" placeholder="${t("password_ph")}" type="password" autocomplete="current-password" />
+           <input class="input" id="password" name="password" placeholder="${t("password_ph")}" type="password" autocomplete="current-password" value="${DEMO_PASSWORD}" />
          </div>
          <button class="btn btn-primary btn-block" style="margin-top: 20px;">${t("continue")}</button>
          <div id="login-error"></div>
