@@ -1,0 +1,34 @@
+PROJECT NAME
+ITC Matchmaker — protect your GST credit before filing
+
+DEMO CREDENTIALS
+Email: owner@demo.in
+Password: demo123
+
+WHO IT IS FOR
+Small and mid-size businesses (MSMEs) that buy from many suppliers. After Section 16(2)(aa) (effective 1 Jan 2022), ITC can be claimed ONLY if the invoice appears in GSTR-2B. So every month a business must reconcile its purchase books against GSTR-2B and chase suppliers to fix mismatches before the return deadline. GSTR-2B automated the statement, but the books-vs-2B reconciliation and supplier follow-up is still manual, jargon-heavy, and painful — that is the gap this fills.
+
+2-MINUTE VIDEO SCRIPT
+
+First minute - business owner demo:
+Hi, this is ITC Matchmaker. After GSTR-2B, a business can claim Input Tax Credit only if the invoice shows up correctly in the portal. If a supplier files late, mistypes an invoice number, enters the wrong amount or GSTIN, that credit is blocked — and the business may pay that GST again in cash.
+
+I log in as Aarohi Electronics. The dashboard immediately shows the answer: safe money, stuck money (Rs 52,120 at risk), and the exact action plan. I import my August purchase register and open the Reconciliation Room. Tapping any bill opens a side-by-side comparison of my register versus the supplier's GSTR-2B record, with the exact mismatched field highlighted — a wrong invoice number here, a different GSTIN there, a missing upload elsewhere.
+
+On Fix Problems, each issue opens in plain language: what happened, why it matters, what to do. I send ready-made supplier messages, mark them corrected, re-run the check, and watch recovered credit go up. Finally, "Can I File?" gives a clear yes/no once everything is resolved.
+
+Second minute - build explanation:
+It runs entirely in the browser with HTML, CSS and JavaScript, and localStorage for state. The key point: matching is real, not hardcoded. There are two separate datasets — the purchase register and GSTR-2B — and a reconcile() engine compares them at runtime. It uses fuzzy invoice-number matching (Levenshtein distance), plus GSTIN, amount and date comparison, to classify every bill as Matched, Likely match (typo), Amount mismatch, GSTIN mismatch, Missing, Duplicate, or Blocked ITC, each with a confidence score. The mismatches are discovered by the algorithm, not pre-labelled.
+
+The improvement: GSTR-2B tells you WHAT is eligible; it does not tell a non-expert WHY an invoice is missing, WHO to contact, or WHAT to say — and it does not confirm recovery. ITC Matchmaker closes that last-mile gap.
+
+250-WORD SUMMARY DRAFT
+
+ITC Matchmaker is a GST portal redesign for small businesses that protects Input Tax Credit before filing GSTR-3B. Since Section 16(2)(aa) took effect in January 2022, ITC can be claimed only if an invoice appears in GSTR-2B. So every month a business must reconcile its purchase books against GSTR-2B and chase suppliers to correct mismatches before the deadline. GSTR-2B automated the statement, but that reconciliation and follow-up is still manual, technical, and painful — especially for owners who are not tax experts.
+
+The app closes that gap. A business imports its purchase register, and a real matching engine compares it against GSTR-2B at runtime. Using fuzzy invoice-number matching plus GSTIN, amount and date checks, it classifies each bill as Matched, Likely match, Amount mismatch, GSTIN mismatch, Missing, Duplicate, or Blocked credit, with a confidence score — the mismatches are computed, not hardcoded.
+
+A guided eight-step flow then turns findings into action: a Reconciliation Room shows each bill beside its GSTR-2B record with the exact mismatched field highlighted; Fix Problems explains every issue in plain language; Send Messages generates ready-to-copy supplier notes; and after corrections are marked and rechecked, recovered credit is tracked. The Filing Report and a clear "Can I File?" decision reach a confident yes once everything is resolved.
+
+ITC Matchmaker is better because it does not just show mismatches — it explains why they happened, who to contact, what to say, and confirms recovery, protecting cashflow for everyday Indian businesses.
+ 
