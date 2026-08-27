@@ -864,6 +864,105 @@ a {
 
  
 
+.lang-toggle {
+
+  display: inline-flex;
+
+  gap: 4px;
+
+  margin-top: 16px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 999px;
+
+  background: #f1f4f9;
+
+  padding: 4px;
+
+}
+
+
+ 
+
+.lang-toggle button {
+
+  border-radius: 999px;
+
+  background: transparent;
+
+  padding: 7px 14px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  font-weight: 900;
+
+}
+
+
+ 
+
+.lang-toggle button.active {
+
+  background: white;
+
+  color: var(--navy);
+
+  box-shadow: 0 3px 10px rgba(11, 22, 63, 0.1);
+
+}
+
+
+ 
+
+.login-card-top {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+}
+
+
+ 
+
+.login-card-top .lang-toggle {
+
+  margin-top: 0;
+
+}
+
+
+ 
+
+.account-lang {
+
+  padding: 6px 4px 2px;
+
+}
+
+
+ 
+
+.account-lang .lang-toggle {
+
+  margin-top: 0;
+
+  width: 100%;
+
+  justify-content: center;
+
+}
+
+
+ 
+
 .side-note strong {
 
   color: var(--navy);
@@ -5660,9 +5759,6 @@ span {
   }
 
 }
-
-
- 
 
 
  
