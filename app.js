@@ -200,6 +200,11 @@ const STR = {
    login_sub: "Check whether your Input Tax Credit is safe before filing this month.",
    email: "Email", password: "Password", password_ph: "Enter password", continue: "Continue",
    login_err: "Enter the email and password for this business account.",
+   // portal reality preview
+   reality_eyebrow: "The reality today",
+   reality_link: "See what the GST portal shows you today →",
+   portal_back: "← This is the better way",
+   portal_banner: "You are viewing a re-creation of the government GST portal experience.",
    // nav
    nav_dashboard: "Start Here", nav_upload: "Upload Bills", nav_register: "Purchase Register",
    nav_reconcile: "Reconcile", nav_matchmaker: "Fix Problems", nav_suppliers: "Send Messages",
@@ -402,6 +407,11 @@ const STR = {
    login_sub: "इस महीने फाइल करने से पहले जाँचें कि आपका इनपुट टैक्स क्रेडिट सुरक्षित है या नहीं।",
    email: "ईमेल", password: "पासवर्ड", password_ph: "पासवर्ड दर्ज करें", continue: "आगे बढ़ें",
    login_err: "इस बिज़नेस अकाउंट का ईमेल और पासवर्ड दर्ज करें।",
+   // portal reality preview
+   reality_eyebrow: "आज की हकीकत",
+   reality_link: "देखें आज जीएसटी पोर्टल आपको क्या दिखाता है →",
+   portal_back: "← यह बेहतर तरीका है",
+   portal_banner: "आप सरकारी जीएसटी पोर्टल अनुभव की पुनर्रचना देख रहे हैं।",
    nav_dashboard: "यहाँ से शुरू करें", nav_upload: "बिल अपलोड करें", nav_register: "खरीद रजिस्टर",
    nav_reconcile: "मिलान करें", nav_matchmaker: "समस्याएँ ठीक करें", nav_suppliers: "संदेश भेजें",
    nav_report: "फाइलिंग रिपोर्ट", nav_readiness: "क्या मैं फाइल करूँ?",
@@ -994,6 +1004,7 @@ function dashboardView() {
            : `<a class="btn btn-orange" href="#/upload">${state.uploaded ? t("d_review_bills") : t("d_start_bills")}</a><a class="btn btn-light" href="#/reconcile">${t("d_see_mismatch")}</a>`
          }
        </div>
+       <a class="reality-link" href="#/portal-preview">${t("reality_link")}</a>
      </div>
      <div class="verdict-card">
        <span>${allClear ? t("d_filing_status") : t("d_cash_impact")}</span>
@@ -1608,9 +1619,117 @@ function readinessView() {
  `);
 }
 
+function portalPreviewView() {
+ // Intentionally dense, jargon-heavy re-creation of the government GSTR-2B experience.
+ // English-only and unexplained on purpose — this is the "before" that ITC Matchmaker fixes.
+ const nameByGstin = {};
+ purchaseRegister.forEach((b) => { nameByGstin[b.gstin] = b.supplier; });
+
+ const rows = gstr2b.map((r, i) => {
+   const rate = 18;
+   const igst = 0;
+   const cgst = Math.round(r.gst / 2);
+   const sgst = r.gst - cgst;
+   const invVal = r.taxable + r.gst;
+   const itcYes = i % 3 !== 2;
+   const reason = itcYes ? "—" : "Rule 37A / supplier default";
+   return `
+     <tr class="${itcYes ? "" : "gp-flag"}">
+       <td class="gp-mono">${r.gstin}</td>
+       <td>${(nameByGstin[r.gstin] || "—").toUpperCase()}</td>
+       <td class="gp-mono">${r.invNo}</td>
+       <td>R</td>
+       <td>${r.date}-2026</td>
+       <td class="gp-num">${invVal.toLocaleString("en-IN")}.00</td>
+       <td>29-Karnataka</td>
+       <td>${rate}%</td>
+       <td class="gp-num">${r.taxable.toLocaleString("en-IN")}.00</td>
+       <td class="gp-num">${igst.toFixed(2)}</td>
+       <td class="gp-num">${cgst.toLocaleString("en-IN")}.00</td>
+       <td class="gp-num">${sgst.toLocaleString("en-IN")}.00</td>
+       <td class="gp-num">0.00</td>
+       <td class="${itcYes ? "gp-yes" : "gp-no"}">${itcYes ? "Yes" : "No"}</td>
+       <td class="gp-reason">${reason}</td>
+     </tr>`;
+ }).join("");
+
+ const tabs = ["B2B", "B2BA", "B2B-CDNR", "B2B-CDNRA", "ISD", "ISD-A", "IMPG", "IMPG (SEZ)"];
+
+ return `
+   <div class="gp-root">
+     <div class="gp-topband">
+       <div class="gp-topband-inner">
+         <span>Goods and Services Tax</span>
+         <span class="gp-topband-links">Skip to Main Content · A+ A-  ·  English ▾  ·  Logout</span>
+       </div>
+     </div>
+     <header class="gp-header">
+       <div class="gp-emblem"><span class="gp-emblem-mark">☸</span><div><strong>GST</strong><small>Government of India</small></div></div>
+       <div class="gp-userbox">
+         <div>29ABCDE1234F1Z5</div>
+         <div class="gp-muted">AAROHI ELECTRONICS · FY 2026-27 · Aug</div>
+       </div>
+     </header>
+     <nav class="gp-menu">
+       <span>Dashboard</span><span>Services ▾</span><span>GST Law</span><span>Downloads ▾</span><span>Search Taxpayer ▾</span><span>Help and Taxpayer Facilities</span><span>e-Invoice</span>
+     </nav>
+     <div class="gp-breadcrumb">Dashboard > Returns > Returns Dashboard > Auto-drafted ITC Statement GSTR-2B</div>
+
+     <main class="gp-main">
+       <div class="gp-titlebar">
+         <h1>GSTR-2B  <span class="gp-muted">Auto-drafted ITC Statement</span></h1>
+         <div class="gp-actions">
+           <button class="gp-btn">GENERATE JSON FILE TO DOWNLOAD</button>
+           <button class="gp-btn">DOWNLOAD EXCEL</button>
+           <button class="gp-btn gp-btn-primary">VIEW ADVISORY</button>
+         </div>
+       </div>
+
+       <div class="gp-notice">
+         <strong>Advisory:</strong> ITC available in Table 4(A)(5) is provisional and subject to Section 16(2)(aa), Rule 36(4), Rule 37 and Rule 37A. Recipient must reconcile with books before availing. Values are auto-populated from supplier GSTR-1/IFF/GSTR-5. Non-availment / reversal, if any, to be reported in GSTR-3B Table 4(B). E. & O.E.
+       </div>
+
+       <div class="gp-tabs">
+         ${tabs.map((name, i) => `<span class="gp-tab ${i === 0 ? "gp-tab-active" : ""}">${name}</span>`).join("")}
+       </div>
+
+       <div class="gp-summarygrid">
+         <div><span class="gp-muted">No. of records</span><strong>${gstr2b.length}</strong></div>
+         <div><span class="gp-muted">Taxable value (₹)</span><strong>${gstr2b.reduce((s, r) => s + r.taxable, 0).toLocaleString("en-IN")}.00</strong></div>
+         <div><span class="gp-muted">Integrated tax (₹)</span><strong>0.00</strong></div>
+         <div><span class="gp-muted">Central tax (₹)</span><strong>${gstr2b.reduce((s, r) => s + Math.round(r.gst / 2), 0).toLocaleString("en-IN")}.00</strong></div>
+         <div><span class="gp-muted">State/UT tax (₹)</span><strong>${gstr2b.reduce((s, r) => s + (r.gst - Math.round(r.gst / 2)), 0).toLocaleString("en-IN")}.00</strong></div>
+         <div><span class="gp-muted">Cess (₹)</span><strong>0.00</strong></div>
+       </div>
+
+       <div class="gp-tablewrap">
+         <table class="gp-table">
+           <thead>
+             <tr>
+               <th>GSTIN of Supplier</th><th>Trade/Legal name</th><th>Invoice no.</th><th>Type</th><th>Invoice Date</th><th>Invoice Value (₹)</th><th>Place of supply</th><th>Rate (%)</th><th>Taxable value (₹)</th><th>Integrated Tax (₹)</th><th>Central Tax (₹)</th><th>State/UT Tax (₹)</th><th>Cess (₹)</th><th>ITC avbl.</th><th>Reason</th>
+             </tr>
+           </thead>
+           <tbody>${rows}</tbody>
+         </table>
+       </div>
+
+       <p class="gp-footnote">Note: Invoices reported by your suppliers only. Missing invoices will NOT appear here. Any mismatch in invoice number, GSTIN, taxable value or tax amount must be identified and reconciled by the recipient. Availing ineligible ITC may attract interest u/s 50 and penalty. This statement does not constitute confirmation of eligibility.</p>
+     </main>
+
+     <a class="gp-return" href="#/dashboard">${t("portal_back")} (ITC Matchmaker)</a>
+     <div class="gp-watermark">${t("portal_banner")}</div>
+   </div>
+ `;
+}
+
 function render() {
  const route = window.location.hash || "#/dashboard";
  const app = document.querySelector("#app");
+
+ if (route === "#/portal-preview") {
+   app.innerHTML = portalPreviewView();
+   return;
+ }
 
  if (!state.user || route === "#/login") {
    app.innerHTML = loginView();

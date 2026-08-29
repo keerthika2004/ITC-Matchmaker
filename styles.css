@@ -5762,3 +5762,243 @@ span {
 
 
  
+
+/* ---------------------------------------------------------
+
+   "Today's reality" entry link on the dashboard hero
+
+   --------------------------------------------------------- */
+
+.reality-link {
+
+  display: inline-block;
+
+  margin-top: 14px;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  text-decoration: underline;
+
+  text-underline-offset: 3px;
+
+  cursor: pointer;
+
+}
+
+.reality-link:hover { color: #fff; }
+
+
+ 
+
+/* ---------------------------------------------------------
+
+   Mock GST portal ("before" experience) � deliberately dense
+
+   --------------------------------------------------------- */
+
+.gp-root {
+
+  min-height: 100vh;
+
+  background: #eef1f4;
+
+  color: #1a1a1a;
+
+  font-family: Arial, "Segoe UI", Tahoma, sans-serif;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  padding-bottom: 90px;
+
+}
+
+.gp-topband { background: #2a2a2a; color: #dcdcdc; font-size: 11px; }
+
+.gp-topband-inner {
+
+  max-width: 1180px; margin: 0 auto; padding: 4px 14px;
+
+  display: flex; justify-content: space-between; gap: 12px;
+
+}
+
+.gp-topband-links { color: #9fb6d1; }
+
+.gp-header {
+
+  background: #ffffff; border-bottom: 3px solid #17457f;
+
+  display: flex; align-items: center; justify-content: space-between;
+
+  padding: 10px 14px; max-width: 1180px; margin: 0 auto;
+
+}
+
+.gp-emblem { display: flex; align-items: center; gap: 10px; }
+
+.gp-emblem-mark {
+
+  width: 40px; height: 40px; border-radius: 50%;
+
+  background: #17457f; color: #fff; font-size: 22px;
+
+  display: flex; align-items: center; justify-content: center;
+
+}
+
+.gp-emblem strong { display: block; color: #17457f; font-size: 20px; letter-spacing: 1px; }
+
+.gp-emblem small { color: #666; font-size: 10px; }
+
+.gp-userbox { text-align: right; font-size: 12px; font-weight: 700; color: #17457f; }
+
+.gp-muted { color: #777; font-weight: 400; }
+
+.gp-menu {
+
+  background: #17457f; color: #fff; max-width: 1180px; margin: 0 auto;
+
+  display: flex; flex-wrap: wrap; gap: 2px; padding: 0 6px; font-size: 12px;
+
+}
+
+.gp-menu span { padding: 9px 11px; cursor: pointer; white-space: nowrap; }
+
+.gp-menu span:hover { background: #0f3260; }
+
+.gp-breadcrumb {
+
+  max-width: 1180px; margin: 0 auto; padding: 7px 14px;
+
+  color: #555; font-size: 11px; background: #dfe4ea;
+
+}
+
+.gp-main { max-width: 1180px; margin: 0 auto; padding: 14px; }
+
+.gp-titlebar {
+
+  display: flex; align-items: center; justify-content: space-between;
+
+  flex-wrap: wrap; gap: 10px; margin-bottom: 10px;
+
+}
+
+.gp-titlebar h1 { font-size: 18px; color: #17457f; margin: 0; }
+
+.gp-actions { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.gp-btn {
+
+  border: 1px solid #17457f; background: #fff; color: #17457f;
+
+  font-size: 11px; font-weight: 700; padding: 6px 10px; border-radius: 2px; cursor: pointer;
+
+}
+
+.gp-btn-primary { background: #17457f; color: #fff; }
+
+.gp-notice {
+
+  background: #fff8e1; border: 1px solid #e6c200; color: #6b5900;
+
+  padding: 8px 10px; font-size: 11px; border-radius: 2px; margin-bottom: 12px;
+
+}
+
+.gp-tabs { display: flex; flex-wrap: wrap; gap: 1px; border-bottom: 2px solid #17457f; margin-bottom: 10px; }
+
+.gp-tab {
+
+  padding: 7px 12px; background: #dfe4ea; color: #33475b;
+
+  font-size: 11px; font-weight: 700; cursor: pointer; border: 1px solid #c3ccd6; border-bottom: none;
+
+}
+
+.gp-tab-active { background: #17457f; color: #fff; }
+
+.gp-summarygrid {
+
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px;
+
+  background: #c3ccd6; border: 1px solid #c3ccd6; margin-bottom: 12px;
+
+}
+
+.gp-summarygrid > div { background: #fff; padding: 8px 10px; display: flex; flex-direction: column; gap: 2px; }
+
+.gp-summarygrid strong { font-size: 14px; color: #17457f; }
+
+.gp-tablewrap { overflow-x: auto; border: 1px solid #c3ccd6; background: #fff; }
+
+.gp-table { border-collapse: collapse; width: 100%; min-width: 1150px; font-size: 11px; }
+
+.gp-table th {
+
+  background: #17457f; color: #fff; font-weight: 700;
+
+  padding: 7px 8px; text-align: left; border: 1px solid #0f3260; white-space: nowrap;
+
+}
+
+.gp-table td { padding: 6px 8px; border: 1px solid #d6dce3; white-space: nowrap; }
+
+.gp-table tbody tr:nth-child(even) { background: #f4f7fa; }
+
+.gp-mono { font-family: "Consolas", "Courier New", monospace; }
+
+.gp-num { text-align: right; font-family: "Consolas", "Courier New", monospace; }
+
+.gp-yes { color: #1a7d32; font-weight: 700; }
+
+.gp-no { color: #b00020; font-weight: 700; }
+
+.gp-reason { color: #b00020; font-size: 10px; }
+
+.gp-flag { background: #fff2f2 !important; }
+
+.gp-footnote { color: #666; font-size: 10px; margin-top: 10px; line-height: 1.5; }
+
+.gp-return {
+
+  position: fixed; left: 50%; transform: translateX(-50%); bottom: 46px; z-index: 50;
+
+  background: linear-gradient(135deg, #ff7a1a, #ff5722); color: #fff;
+
+  font-family: Inter, sans-serif; font-weight: 900; font-size: 14px;
+
+  padding: 12px 22px; border-radius: 999px; cursor: pointer;
+
+  box-shadow: 0 12px 30px rgba(255, 87, 34, 0.45);
+
+}
+
+.gp-watermark {
+
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 49;
+
+  background: rgba(20, 25, 35, 0.9); color: #dfe4ea;
+
+  font-family: Inter, sans-serif; font-size: 11px; text-align: center; padding: 6px 10px;
+
+}
+
+@media (max-width: 620px) {
+
+  .gp-summarygrid { grid-template-columns: repeat(2, 1fr); }
+
+  .gp-titlebar h1 { font-size: 15px; }
+
+  .gp-return { font-size: 12px; padding: 10px 16px; }
+
+}
+
+
+ 
